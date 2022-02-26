@@ -44,20 +44,32 @@
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
     let firstAndLastName = inventors.map(inventor =>
-      
+      [inventor.first, inventor.last]
     );
     console.log(firstAndLastName);
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
-
+    inventors.sort((firstInventor, secondInventor) => {
+      if (firstInventor.year < secondInventor.year) {return -1}
+      if (firstInventor.year > secondInventor.year) {return 1}
+      return 0;
+    })
+    console.log(inventors);
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
-
+    let combinedYears = inventors.reduce((accumulator, inventor) => {
+        return inventor.passed - inventor.year;
+    },0);
+    console.log(combinedYears);
     // 5. Sort the inventors by years lived
+    inventors.sort((a, b) => {
+      const lastInventor = a.passed - a.year;
+      const nextInventor = b.passed - b.year;
+      return lastInventor > nextInventor ? -1 : 1;
+    });
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
@@ -65,7 +77,16 @@
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
-
+    let freq = data.reduce((freq, item) => {
+      if(freq[item]) {
+        freq[item] += 1;
+      } else {
+        freq[item] = 1;
+      }
+      return freq
+    }, {});
+    console.log(freq);
+    console.log('=====');
   </script>
 </body>
 </html>
