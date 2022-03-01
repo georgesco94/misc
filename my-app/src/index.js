@@ -47,16 +47,7 @@ class Game extends React.Component {
     super(props);
     this.state = {
       history: [
-        {squares: (() => {
-          let finalArr = [];
-          for (var row = 0; row < 3; row++) {
-            for (var col = 0; col < 3; col++) {
-              finalArr.push(null);
-            }
-          }
-          return finalArr;
-        })()
-        }
+        {squares: Array(9).fill(null)}
       ],
       xIsNext: true,
       stepNumber: 0,
