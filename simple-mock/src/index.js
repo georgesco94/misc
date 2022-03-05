@@ -12,4 +12,4 @@ const mockData = [
   {category: "Electronics", price: "$199.99", stocked: true, name: "Nexus 7"}
 ];
 const rootNode = document.getElementById('root');
-ReactDOM.render(<FilterableProductTable data=mockData/>, rootNode);
+ReactDOM.render(<FilterableProductTable data={mockData}/>, rootNode);

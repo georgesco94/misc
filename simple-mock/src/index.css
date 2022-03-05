@@ -5,7 +5,7 @@ html, body, div {
 .filterable-product-table {
   width: 500px;
   min-height: 400px;
-  background: red;
+  /* background: red; */
   position: absolute;
   left: 50%;
   top: 50%;
@@ -14,9 +14,9 @@ html, body, div {
 }
 
 .search-bar {
-  background: blue;
+  /* background: blue; */
 }
 
 .product-table {
-  background: yellow;
+  /* background: yellow; */
 }
