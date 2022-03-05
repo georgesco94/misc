@@ -13,7 +13,7 @@ function Square(props) {
 function BoardRow(props) {
   return (
     <div className="board-row">
-      {props.children}
+      {props.squares}
     </div>
   );
 }
@@ -33,7 +33,7 @@ class Board extends React.Component {
       for (let j = 0; j < 3; j++) {
         sq.push(this.renderSquare(j + (3 * i)));
       }
-      rowsAndCols.push(<BoardRow>{sq}</BoardRow>)
+      rowsAndCols.push(<BoardRow squares={sq}/>)
     }
 
     return (
