@@ -21,6 +21,7 @@ function BoardRow(props) {
 class Board extends React.Component {
   renderSquare(i) {
     return <Square
+      key={i}
       value={this.props.squares[i]}
       onClick={() => this.props.onClick(i)}
     />;
@@ -33,7 +34,7 @@ class Board extends React.Component {
       for (let j = 0; j < 3; j++) {
         sq.push(this.renderSquare(j + (3 * i)));
       }
-      rowsAndCols.push(<BoardRow squares={sq}/>)
+      rowsAndCols.push(<BoardRow key={i} squares={sq}/>)
     }
 
     return (
@@ -57,6 +58,7 @@ class Game extends React.Component {
       ],
       xIsNext: true,
       stepNumber: 0,
+      reversed: false,
     };
   }
 
@@ -75,6 +77,10 @@ class Game extends React.Component {
       xIsNext: !this.state.xIsNext,
       stepNumber: history.length,
     });
+  }
+
+  handleToggle() {
+    this.setState((state,props)=> ({reversed: !state.reversed}))
   }
 
   jumpTo(step) {
@@ -101,6 +107,10 @@ class Game extends React.Component {
       )
     });
 
+    if (this.state.reversed){
+      moves.reverse();
+    }
+
     let status;
     if (winner) {
       status = 'Winner: ' + winner;
@@ -118,6 +128,7 @@ class Game extends React.Component {
         </div>
         <div className="game-info">
           <div>{status}</div>
+          <button onClick={() => this.handleToggle()}>Reverse Order</button>
           <ol>{moves}</ol>
         </div>
       </div>
