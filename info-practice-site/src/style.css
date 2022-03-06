@@ -39,6 +39,10 @@ html {
 
 .main {
   height: 100%;
+  width: 100%;
   padding: 50px 27px;
   background: #282D35;
+  background-image: url("rjsl.png");
+  background-repeat: no-repeat;
+  background-position: right center;
 }
