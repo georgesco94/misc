@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+body, nav {
+  margin: 0;
+  padding: 0;
+  color: white;
+}
+html {
+  font-family: 'Inter', sans-serif;
+}
+
+#root, #root > div {
+  height: 100%;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 91px;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: normal;
+  background: #21222A;
+}
+
+.navbar-logo-text {
+  display: flex;
+  align-items: center;
+  color: #61DAFB;
+}
+
+.react-color {
+  margin-left: 15px;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+.main {
+  height: 100%;
+  padding: 50px 27px;
+  background: #282D35;
+}
