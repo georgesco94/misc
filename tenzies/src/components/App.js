@@ -7,7 +7,9 @@ export default function App() {
   function allNewDice() {
     const arrOfNums = [];
     for (var i = 0; i < 10; i++) {
-      arrOfNums.push(Math.floor(Math.random() * 6) + 1);
+      arrOfNums.push(
+        {value: Math.floor(Math.random() * 6) + 1, isHeld: false }
+      );
     }
     return arrOfNums;
   }
@@ -15,7 +17,7 @@ export default function App() {
   const [dice, setDice] = React.useState(allNewDice());
 
   const dieElements = dice.map((die, idx) => {
-    return <Die dieNumber={die}/>;
+    return <Die dieNumber={die.value} isHeld={die.isHeld} />;
   });
 
   function handleRoll() {
