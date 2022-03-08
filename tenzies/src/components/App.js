@@ -21,11 +21,21 @@ export default function App() {
   const [dice, setDice] = React.useState(allNewDice());
 
   const dieElements = dice.map((die, idx) => {
-    return <Die key={die.id} dieNumber={die.value} isHeld={die.isHeld} />;
+    return <Die
+      key={die.id}
+      id={die.id}
+      dieNumber={die.value}
+      isHeld={die.isHeld}
+      holdDie={holdDice}
+    />;
   });
 
   function handleRoll() {
     setDice(allNewDice());
+  }
+
+  function holdDice(e, id) {
+    console.log(id);
   }
 
   return(
