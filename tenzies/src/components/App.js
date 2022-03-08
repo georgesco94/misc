@@ -33,6 +33,11 @@ export default function App() {
   }
 
   function rollDice() {
+    if (tenzies) {
+      setTenzies(false);
+      setDice(allNewDice());
+      return;
+    }
     setDice(prevDice => {
       return prevDice.map(die => die.isHeld ? die : rollSingleDie())
     });
@@ -55,7 +60,6 @@ export default function App() {
       holdDie={holdDice}
     />;
   });
-
 
   return(
     <main className="main">
