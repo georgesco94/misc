@@ -1,14 +1,18 @@
 import React from 'react';
 import '../styles/App.css';
 import Die from './Die.js';
-
+import {nanoid} from 'nanoid';
 
 export default function App() {
   function allNewDice() {
     const arrOfNums = [];
     for (var i = 0; i < 10; i++) {
       arrOfNums.push(
-        {value: Math.floor(Math.random() * 6) + 1, isHeld: false }
+        {
+          value: Math.floor(Math.random() * 6) + 1,
+          isHeld: false,
+          id: nanoid(),
+        }
       );
     }
     return arrOfNums;
@@ -17,7 +21,7 @@ export default function App() {
   const [dice, setDice] = React.useState(allNewDice());
 
   const dieElements = dice.map((die, idx) => {
-    return <Die dieNumber={die.value} isHeld={die.isHeld} />;
+    return <Die key={die.id} dieNumber={die.value} isHeld={die.isHeld} />;
   });
 
   function handleRoll() {
