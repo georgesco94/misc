@@ -4,15 +4,19 @@ import Die from './Die.js';
 import {nanoid} from 'nanoid';
 
 export default function App() {
+  function rollSingleDie() {
+    return {
+      value: Math.floor(Math.random() * 6) + 1,
+      isHeld: false,
+      id: nanoid(),
+    };
+  }
+
   function allNewDice() {
     const arrOfNums = [];
     for (var i = 0; i < 10; i++) {
       arrOfNums.push(
-        {
-          value: Math.floor(Math.random() * 6) + 1,
-          isHeld: false,
-          id: nanoid(),
-        }
+        rollSingleDie()
       );
     }
     return arrOfNums;
@@ -30,8 +34,10 @@ export default function App() {
     />;
   });
 
-  function handleRoll() {
-    setDice(allNewDice());
+  function rollDice() {
+    setDice(prevDice => {
+      return prevDice.map(die => die.isHeld ? die : rollSingleDie())
+    });
   }
 
   function holdDice(e, id) {
@@ -47,7 +53,7 @@ export default function App() {
       <div className="dice-container">
         {dieElements}
       </div>
-      <button className="die-roll-button" onClick={handleRoll}>Roll</button>
+      <button className="die-roll-button" onClick={rollDice}>Roll</button>
     </main>
   );
 }
