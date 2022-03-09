@@ -37,7 +37,10 @@ export default class App extends React.Component {
           toggleShowInStock={() => this.toggleShowInStock()}
           updateFilterText={(e) => this.updateFilterText(e)}
         />
-        <Table inventory={this.state.inventory} showInStock={this.state.showInStock}/>
+        <Table
+          inventory={this.state.inventory}
+          showInStock={this.state.showInStock}
+        />
       </div>
     )
   }
