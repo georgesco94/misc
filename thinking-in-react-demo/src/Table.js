@@ -1,6 +1,10 @@
 import React from 'react';
 
 export default function Table(props) {
+  let availableInventory = props.inventory;
+  if (props.showInStock) {
+    availableInventory = availableInventory.filter(item => item.stocked);
+  }
 
   function getCategories(inventory) {
     const categories = new Set();
@@ -10,9 +14,9 @@ export default function Table(props) {
     return categories;
   }
 
-  const categories = getCategories(props.inventory);
-
+  const categories = getCategories(availableInventory);
   const stockInventory = [];
+
 
   categories.forEach(category => {
     stockInventory.push(
@@ -20,7 +24,7 @@ export default function Table(props) {
         <th>{category}</th>
       </tr>
     )
-    const categoryItems = props.inventory.filter(item => item.category === category).map(item => {
+    const categoryItems = availableInventory.filter(item => item.category === category).map(item => {
       return (
         <tr key={item.name}>
           <td className={item.stocked ? 'in-stock' : 'out-of-stock'}>{item.name}</td>
