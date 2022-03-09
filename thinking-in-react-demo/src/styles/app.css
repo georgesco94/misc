@@ -1,0 +1,9 @@
+.inventory-app {
+  width: 400px;
+  border: 1px solid black;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+}
