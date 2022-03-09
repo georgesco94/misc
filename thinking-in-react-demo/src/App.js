@@ -40,6 +40,7 @@ export default class App extends React.Component {
         <Table
           inventory={this.state.inventory}
           showInStock={this.state.showInStock}
+          filterText={this.state.filterText}
         />
       </div>
     )

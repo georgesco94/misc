@@ -5,6 +5,9 @@ export default function Table(props) {
   if (props.showInStock) {
     availableInventory = availableInventory.filter(item => item.stocked);
   }
+  if (props.filterText) {
+    availableInventory = availableInventory.filter(item => item.name.includes(props.filterText))
+  }
 
   function getCategories(inventory) {
     const categories = new Set();
