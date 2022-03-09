@@ -10,6 +10,7 @@ export default class App extends React.Component {
     this.state = {
       inventory: [],
       showInStock: false,
+      filterText: '',
     }
   }
 
@@ -23,10 +24,19 @@ export default class App extends React.Component {
     });
   }
 
+  updateFilterText(e) {
+    this.setState({filterText: e.target.value})
+  }
+
   render() {
     return(
       <div className="inventory-app">
-        <Filters showInStock={this.state.showInStock} toggleShowInStock={() => this.toggleShowInStock()} />
+        <Filters
+          showInStock={this.state.showInStock}
+          filterText={this.state.filterText}
+          toggleShowInStock={() => this.toggleShowInStock()}
+          updateFilterText={(e) => this.updateFilterText(e)}
+        />
         <Table inventory={this.state.inventory} showInStock={this.state.showInStock}/>
       </div>
     )

@@ -2,14 +2,21 @@ import React from 'react';
 
 export default class Filters extends React.Component {
 
-  handleChange(e) {
+  handleChange() {
     this.props.toggleShowInStock();
   }
 
   render() {
     return(
       <div className="filters">
-        <input className="filters--search" type="text" placeholder="Search..." />
+        <input
+          className="filters--search"
+          type="text"
+          name="filterText"
+          placeholder="Search..."
+          value={this.props.filterText}
+          onChange={(e) => this.props.updateFilterText(e)} 
+        />
         <label>
           <input
             type="checkbox"
